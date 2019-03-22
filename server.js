@@ -22,7 +22,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //connect to Mongo DB
-mongoose.connect("mongodb://localhost/Browser_Scrape", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/BrowserScrape" + { useNewUrlParser: true };
+mongoose.connect(MONGODB_URI);
 var db = mongoose.connection;
 
 db.on("error", function (error) {
